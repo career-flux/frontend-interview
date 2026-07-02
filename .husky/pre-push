@@ -1,0 +1,46 @@
+#!/bin/sh
+
+protected_branch='main'
+
+# Both SSH and HTTPS remote URLs for this repository
+protected_remote_urls="\
+  git@github.com:career-flux/frontend-interview.git
+  https://github.com/career-flux/frontend-interview.git"
+
+# Husky passes the remote name ($1) and remote URL ($2) as arguments to this hook
+remote_name="$1"
+remote_url="$2"
+
+# Allow pushes to forks, only block direct pushes to the protected remote
+is_remote_protected=0
+for protected_remote_url in $protected_remote_urls; do
+  if [ "$remote_url" = "$protected_remote_url" ]; then
+    is_remote_protected=1
+    break
+  fi
+done
+
+if [ "$is_remote_protected" = 0 ]; then
+  exit 0
+fi
+
+# Git streams push targets via stdin: local_ref local_sha remote_ref remote_sha
+# Check if any of them target the protected branch
+push_targets_protected_branch=0
+protected_ref="refs/heads/$protected_branch"
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+  if [ "$remote_ref" = "$protected_ref" ]; then
+    push_targets_protected_branch=1
+    break
+  fi
+done
+
+if [ "$push_targets_protected_branch" = "1" ]; then
+  echo "Direct push to '$protected_branch' on '$remote_name' is not allowed." >&2
+  echo "Use a feature branch and open a pull request instead." >&2
+  echo "" >&2
+  echo "To bypass this check (emergency only):" >&2
+  echo "  git push --no-verify" >&2
+  echo "" >&2
+  exit 1
+fi

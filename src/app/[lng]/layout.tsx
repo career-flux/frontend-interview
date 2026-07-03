@@ -34,6 +34,7 @@ export default async function RootLayout({
           rel="stylesheet"
           as="style"
           crossOrigin="anonymous"
+          integrity="sha384-V6D6tclS+1ROe6W7mgqDzlz750VoLpzneK+eS5rMAgkReZxe5YZeA91NeDdV+Z8E"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"
         />
       </head>

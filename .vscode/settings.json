@@ -36,6 +36,8 @@
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
     "*.jsx": "${capture}.js",
     "tsconfig.json": "tsconfig.*.json",
-    "package.json": "pnpm-lock.yaml, turbo.json"
+    "package.json": "pnpm-lock.yaml, turbo.json",
+    "eslint.config.mjs": ".prettierrc.json, .prettierignore",
+    "next.config.ts": ".mcp.json, next-env.d.ts"
   }
 }

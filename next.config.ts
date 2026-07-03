@@ -27,6 +27,10 @@ const nextConfig: NextConfig = {
   experimental: {
     // Enable typed environment variable access via process.env
     typedEnv: true,
+
+    // Enable a global 404 page, since the root layout is defined
+    // via a top-level dynamic segment (`app/[lng]/layout.tsx`)
+    globalNotFound: true,
   },
 };
 

@@ -1,8 +1,10 @@
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 import { ArrowUpRightIcon, BugIcon } from "@/components/icons";
 import { Shake, SlideUpRight } from "@/components/motion";
 import { Button } from "@/components/ui";
+import { BUG_REPORT_URL, CONTRIBUTION_URL } from "@/config";
 
 export default async function HomePage() {
   const t = await getTranslations("home_page");
@@ -19,27 +21,36 @@ export default async function HomePage() {
         </div>
 
         <div className="flex items-center gap-2.5">
-          <Button
-            variant={"primary"}
-            endIcon={
-              <SlideUpRight>
-                <ArrowUpRightIcon width={20} height={20} />
-              </SlideUpRight>
-            }
+          <Link
+            href={CONTRIBUTION_URL}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            {tAction("open_source_contribution")}
-          </Button>
-          <Button
-            variant={"error"}
-            endIcon={
-              <Shake>
-                <BugIcon width={20} height={20} />
-              </Shake>
-            }
-            className="gap-2"
-          >
-            {tAction("bug_report")}
-          </Button>
+            <Button
+              variant={"primary"}
+              endIcon={
+                <SlideUpRight>
+                  <ArrowUpRightIcon width={20} height={20} />
+                </SlideUpRight>
+              }
+            >
+              {tAction("open_source_contribution")}
+            </Button>
+          </Link>
+
+          <Link href={BUG_REPORT_URL} target="_blank" rel="noopener noreferrer">
+            <Button
+              variant={"error"}
+              endIcon={
+                <Shake>
+                  <BugIcon width={20} height={20} />
+                </Shake>
+              }
+              className="gap-2"
+            >
+              {tAction("bug_report")}
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

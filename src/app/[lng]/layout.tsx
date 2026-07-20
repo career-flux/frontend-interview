@@ -5,7 +5,9 @@ import { notFound } from "next/navigation";
 import { hasLocale, type Locale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { Footer } from "@/components/footer";
 import Header from "@/components/header";
+import { MotionProvider } from "@/components/providers/motion/MotionProvider";
 import { routing } from "@/i18n/routing";
 
 import "../globals.css";
@@ -38,11 +40,14 @@ export default async function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"
         />
       </head>
-      <body>
+      <body className="flex min-h-full flex-col">
         <Suspense>
           <NextIntlClientProvider>
-            <Header lng={lng} />
-            {children}
+            <MotionProvider>
+              <Header lng={lng} />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </MotionProvider>
           </NextIntlClientProvider>
         </Suspense>
       </body>

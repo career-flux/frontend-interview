@@ -13,7 +13,7 @@ interface HeaderProps {
 export default function Header({ lng }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full bg-white">
-      <div className="container mx-auto flex h-16 items-center justify-between">
+      <div className="mx-auto flex h-16 w-full max-w-5xl items-center justify-between px-2.5 lg:px-0">
         <Link href={`/${lng}`} aria-label="Flux Logo">
           <LogoIcon aria-hidden="true" width={120} height={48} />
         </Link>
@@ -26,7 +26,7 @@ export default function Header({ lng }: HeaderProps) {
             className="p-1"
             aria-label="GitHub Link"
           >
-            <GithubIcon aria-hidden="true" width={26} height={26} />
+            <GithubIcon aria-hidden="true" width={25} height={25} />
           </Link>
 
           <LanguageSwitcher />

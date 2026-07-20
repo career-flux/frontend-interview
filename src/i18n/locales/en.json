@@ -4,6 +4,11 @@
     "description": "A collection of questions for those preparing for frontend developer interviews. It provides questions and answers across various topics."
   },
   "home_page": {
-    "title": "Fight !"
+    "title": "No pain, no gain.",
+    "description": "Best of luck with preparations !"
+  },
+  "actions": {
+    "open_source_contribution": "Contribution",
+    "bug_report": "Bug Report"
   }
 }

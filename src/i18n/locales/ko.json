@@ -4,6 +4,11 @@
     "description": "프론트엔드 개발자 면접을 준비하는 사람들을 위한 질문 모음입니다. 다양한 주제에 대한 질문과 답변을 제공합니다."
   },
   "home_page": {
-    "title": "싸워 !"
+    "title": "No pain, no gain.",
+    "description": "여러분 모두에게 좋은 결과가 있기를 바랍니다."
+  },
+  "actions": {
+    "open_source_contribution": "오픈소스 기여",
+    "bug_report": "버그 제보"
   }
 }

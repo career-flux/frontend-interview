@@ -2,6 +2,7 @@
 
 import {
   type ButtonHTMLAttributes,
+  type MouseEvent,
   type ReactNode,
   type Ref,
   useEffect,
@@ -65,6 +66,7 @@ export function Select({
   placeholder = "Select an option",
   options,
   onChange,
+  onClick,
   ...props
 }: SelectProps) {
   const listId = useId();
@@ -91,8 +93,11 @@ export function Select({
     setIsOpen(false);
   };
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
+  const handleToggle = (event: MouseEvent<HTMLButtonElement>) => {
+    onClick?.(event);
+    if (!event.defaultPrevented) {
+      setIsOpen((open) => !open);
+    }
   };
 
   return (
@@ -105,8 +110,8 @@ export function Select({
         aria-haspopup="listbox"
         aria-controls={listId}
         className={cn(selectVariants({ size, fullWidth }), className)}
-        onClick={handleToggle}
         {...props}
+        onClick={handleToggle}
       >
         <span className="flex min-w-0 items-center gap-2">
           {displayIcon && <span className="shrink-0">{displayIcon}</span>}

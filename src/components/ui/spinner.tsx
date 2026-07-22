@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/tailwind";
+import { cn } from "@/utils/tailwind";
 
 const spinnerVariants = cva("animate-spin", {
   variants: {
@@ -18,7 +18,7 @@ const spinnerVariants = cva("animate-spin", {
   },
 });
 
-interface SpinnerProps extends VariantProps<typeof spinnerVariants> {
+export interface SpinnerProps extends VariantProps<typeof spinnerVariants> {
   className?: string;
 }
 
@@ -33,7 +33,7 @@ interface SpinnerProps extends VariantProps<typeof spinnerVariants> {
  * @example
  * <Spinner size="lg" />
  */
-export default function Spinner({ size, className }: SpinnerProps) {
+export function Spinner({ size, className }: SpinnerProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -59,5 +59,4 @@ export default function Spinner({ size, className }: SpinnerProps) {
     </svg>
   );
 }
-
-export { spinnerVariants };
+Spinner.displayName = "Spinner";

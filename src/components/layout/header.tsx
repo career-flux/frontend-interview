@@ -2,8 +2,8 @@ import Link from "next/link";
 
 import { GITHUB_URL } from "@/config";
 
-import { GithubIcon } from "./icons/github";
-import { LogoIcon } from "./icons/logo";
+import { GithubIcon } from "../icons/github";
+import { LogoIcon } from "../icons/logo";
 import LanguageSwitcher from "./language-switcher";
 
 interface HeaderProps {
@@ -12,8 +12,8 @@ interface HeaderProps {
 
 export default function Header({ lng }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-50 w-full bg-white">
-      <div className="mx-auto flex h-16 w-full max-w-5xl items-center justify-between px-2.5 lg:px-0">
+    <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white">
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-2.5 lg:px-0">
         <Link href={`/${lng}`} aria-label="Flux Logo">
           <LogoIcon aria-hidden="true" width={120} height={48} />
         </Link>

@@ -10,5 +10,8 @@
   "actions": {
     "open_source_contribution": "오픈소스 기여",
     "bug_report": "버그 제보"
+  },
+  "common": {
+    "navigation": "메뉴"
   }
 }

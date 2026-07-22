@@ -5,9 +5,9 @@ import { type MouseEvent, type ReactNode } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { type HTMLMotionProps, m } from "motion/react";
 
-import { cn } from "@/lib/tailwind";
+import { cn } from "@/utils/tailwind";
 
-import Spinner from "./spinner";
+import { Spinner } from "./spinner";
 
 const buttonVariants = cva(
   "group relative inline-flex cursor-pointer items-center justify-center font-medium gap-2 rounded-lg transition-colors not-disabled:active:scale-95 disabled:cursor-not-allowed",
@@ -20,6 +20,8 @@ const buttonVariants = cva(
         error: "bg-red-600 text-white not-disabled:hover:bg-red-700",
         outline:
           "border border-neutral-200 bg-transparent not-disabled:hover:bg-neutral-100",
+        ghost:
+          "text-neutral-600 not-disabled:hover:bg-neutral-100 not-disabled:hover:text-neutral-900",
       },
       size: {
         sm: "h-9 px-3 text-sm",
@@ -34,7 +36,7 @@ const buttonVariants = cva(
   }
 );
 
-interface ButtonProps
+export interface ButtonProps
   extends HTMLMotionProps<"button">, VariantProps<typeof buttonVariants> {
   children?: ReactNode;
   /** Icon rendered before the label */
@@ -57,7 +59,7 @@ interface ButtonProps
  * <Button variant="error" size="sm" onClick={handleDelete}>Delete</Button>
  *
  */
-export default function Button({
+export function Button({
   className,
   variant,
   size,
@@ -102,5 +104,4 @@ export default function Button({
     </m.button>
   );
 }
-
-export { buttonVariants };
+Button.displayName = "Button";

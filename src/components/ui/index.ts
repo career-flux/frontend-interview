@@ -1,2 +1,4 @@
-export { default as Button, buttonVariants } from "./button";
-export { default as Spinner, spinnerVariants } from "./spinner";
+export { Button, type ButtonProps } from "./button";
+export { IconButton } from "./icon-button";
+export { Select, type SelectOption, type SelectProps } from "./select";
+export { Spinner, type SpinnerProps } from "./spinner";

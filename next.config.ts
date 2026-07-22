@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [{ hostname: "avatars.githubusercontent.com" }],
+  },
+
   // Enable React Compiler for automatic memoization
   reactCompiler: true,
 

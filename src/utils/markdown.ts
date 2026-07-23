@@ -9,16 +9,16 @@
  * "# Hello"
  */
 export function stripFrontmatter(content: string): string {
-  if (!content.startsWith("---")) {
+  if (!content.startsWith("---\n")) {
     return content;
   }
 
-  const end = content.indexOf("---", 3);
+  const end = content.indexOf("\n---", 4);
   if (end === -1) {
     return content;
   }
 
-  return content.slice(end + 3).trimStart();
+  return content.slice(end + 4).trimStart();
 }
 
 /**

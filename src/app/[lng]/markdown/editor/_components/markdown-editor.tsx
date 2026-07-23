@@ -72,8 +72,9 @@ export function MarkdownEditor() {
           <textarea
             value={content}
             onChange={handleContentChange}
+            aria-label={t("markdown_editor_header")}
             spellCheck={false}
-            className="min-h-0 flex-1 resize-none bg-white px-5 py-4 font-mono text-sm text-neutral-800 outline-none"
+            className="min-h-0 flex-1 resize-none bg-white px-5 py-4 font-mono text-sm text-neutral-800 outline-none focus-visible:ring-2 focus-visible:ring-neutral-400"
           />
         </div>
         <PreviewPanel html={preview} />

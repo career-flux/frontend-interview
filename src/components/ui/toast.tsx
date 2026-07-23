@@ -102,7 +102,12 @@ interface ToastContainerProps {
 
 export function ToastContainer({ toasts, onRemove }: ToastContainerProps) {
   return (
-    <div className="pointer-events-none fixed top-8 left-1/2 z-9999 -translate-x-1/2">
+    <div
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      className="pointer-events-none fixed top-8 left-1/2 z-9999 -translate-x-1/2"
+    >
       <div className="pointer-events-auto flex flex-col gap-3">
         <AnimatePresence>
           {toasts.map((toast) => (

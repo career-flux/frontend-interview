@@ -5,8 +5,8 @@ import { notFound } from "next/navigation";
 import { hasLocale, type Locale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { Footer } from "@/components/footer";
-import Header from "@/components/header";
+import { Footer } from "@/components/layout/footer";
+import Header from "@/components/layout/header";
 import { MotionProvider } from "@/components/providers/motion/MotionProvider";
 import { routing } from "@/i18n/routing";
 

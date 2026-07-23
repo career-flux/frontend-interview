@@ -1,6 +1,12 @@
 export { ArrowUpRightIcon } from "./arrow-up-right";
 export { BugIcon } from "./bug";
+export { ChevronDownIcon } from "./chevron-down";
+export { CloseIcon } from "./close";
 export { EnglishIcon } from "./english";
 export { GithubIcon } from "./github";
+export { HamburgerIcon } from "./hamburger";
+export { JavaScriptIcon } from "./javascript";
 export { LogoIcon } from "./logo";
+export { ReactIcon } from "./react";
 export { TaegeukgiIcon } from "./taegeukgi";
+export { TypeScriptIcon } from "./typescript";

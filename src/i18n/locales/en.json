@@ -10,5 +10,8 @@
   "actions": {
     "open_source_contribution": "Contribution",
     "bug_report": "Bug Report"
+  },
+  "common": {
+    "navigation": "Navigation"
   }
 }

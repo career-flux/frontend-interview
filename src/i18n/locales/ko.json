@@ -7,11 +7,18 @@
     "title": "No pain, no gain.",
     "description": "여러분 모두에게 좋은 결과가 있기를 바랍니다."
   },
+  "editor_page": {
+    "markdown_editor_header": "마크다운 편집기",
+    "markdown_editor_description": "※ --- 로 frontmatter 필드를 감싸주세요 (title, description, contributors, created_at, updated_at).",
+    "copy_success": "마크다운 내용을 복사했어요",
+    "copy_error": "마크다운 내용 복사에 실패했어요"
+  },
   "actions": {
     "open_source_contribution": "오픈소스 기여",
     "bug_report": "버그 제보"
   },
   "common": {
-    "navigation": "메뉴"
+    "navigation": "메뉴",
+    "copy": "복사"
   }
 }

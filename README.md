@@ -9,6 +9,12 @@ This project is designed for learning frontend fundamentals and preparing for in
 
 [English](./CONTRIBUTING.md) | [한국어](./CONTRIBUTING.ko.md)
 
+## Markdown Editor
+
+프로젝트의 콘텐츠 작업을 위해 [마크다운 편집기](https://frontend-interview-delta.vercel.app/ko/markdown/editor)를 제공해요.
+
+A [Markdown editor](https://frontend-interview-delta.vercel.app/ko/markdown/editor) is provided for content creation.
+
 ## Group Chat
 
-https://open.kakao.com/o/gsa7mCGi
+[Kakao] https://open.kakao.com/o/gsa7mCGi

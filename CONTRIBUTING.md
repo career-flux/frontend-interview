@@ -1,7 +1,7 @@
 # Contribution Guide
 
 Korean version is available at [CONTRIBUTING.ko.md](./CONTRIBUTING.ko.md).  
-A [Markdown editor](https://frontend-interview-delta.vercel.app/ko/markdown/editor) is provided for content creation.
+A [Markdown editor](https://frontend-interview-delta.vercel.app/en/markdown/editor) is provided for content creation.
 
 Thank you for your interest in contributing to our project!
 There are two main ways you can contribute to this repository:

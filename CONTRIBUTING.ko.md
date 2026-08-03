@@ -15,10 +15,10 @@ English version is available at [CONTRIBUTING.md](./CONTRIBUTING.md).
 ### 폴더 이름이 카테고리로 사용되고 있어요. (category)
 
 ```
-  📦content
-  ┣ 📂ko
-  ┃ ┣ 📂javascript
-  ┃ ┗ 📂react
+📦content
+ ┣ 📂ko
+ ┃ ┣ 📂javascript
+ ┃ ┗ 📂react
 ```
 
 ※ 새 카테고리(예: `example`)를 추가하면 자동으로 목록에 추가돼요.
@@ -37,18 +37,9 @@ English version is available at [CONTRIBUTING.md](./CONTRIBUTING.md).
 ### 번역본 (locale)
 
 콘텐츠는 확장 대비하여 영문, 한국어 두 가지 언어로 관리되고 있어요.  
-기여할 때는 `두 가지 버전 모두 작업`이 되어야 하지만, 중요도는 낮아요.
+기여할 때는 `두 가지 버전 모두 작업`이 되어야 해요. (번역기를 사용해도 괜찮아요.)
 
-```
-📦content
- ┣ 📂en
- ┃ ┣ 📂javascript
- ┗ 📂ko
- ┃ ┣ 📂javascript
-```
-
-※ 번역본을 서브로 추가할 때는 번역기를 진행해도 괜찮아요.  
-추후 Reddit과 같은 해외 커뮤니티 공유하여 다른 언어의 버전도 자연스럽게 기여가 진행되도록 하기 위함이이예요.
+※ Reddit과 같은 해외 커뮤니티에 공유하여 다른 언어의 버전이 자연스럽게 기여가 진행되도록 하기 위함이에요.
 
 ### 콘텐츠 작성
 

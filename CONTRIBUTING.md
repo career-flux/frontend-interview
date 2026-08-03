@@ -15,10 +15,10 @@ All contents are located in the `[content/ko](./content/ko/)` and `[content/en](
 ### Folder names are used as categories
 
 ```text
-  📦content
-  ┣ 📂ko
-  ┃ ┣ 📂javascript
-  ┃ ┗ 📂react
+📦content
+ ┣ 📂ko
+ ┃ ┣ 📂javascript
+ ┃ ┗ 📂react
 ```
 
 ※ When you add a new category folder (e.g., `example`), it will automatically be added to the category list on the site.
@@ -39,17 +39,9 @@ Please use `kebab-case` for file names so that the URL is easy to read and under
 ### Translations (locale)
 
 To prepare for future expansion, content is managed in both English and Korean.
-When contributing, we ask that you `create both versions`. However, perfect accuracy in the secondary language is not required.
+When contributing, we ask that you `create both versions`.
 
-```text
-📦content
- ┣ 📂en
- ┃ ┣ 📂javascript
- ┗ 📂ko
- ┃ ┣ 📂javascript
-```
-
-※ It is completely fine to use a machine translator for the secondary version. The goal is to set up a basic structure so that when the project is shared on global communities like Reddit, native speakers can naturally step in and improve the translations later.
+※ It is completely fine to use a machine translator for the secondary version.
 
 ### Content Template Notes (Frontmatter)
 

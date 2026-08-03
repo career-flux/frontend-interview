@@ -8,3 +8,7 @@ This project is designed for learning frontend fundamentals and preparing for in
 ## Contribution Guide
 
 [English](./CONTRIBUTING.md) | [한국어](./CONTRIBUTING.ko.md)
+
+## Group Chat
+
+https://open.kakao.com/o/gsa7mCGi

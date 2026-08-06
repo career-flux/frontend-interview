@@ -27,7 +27,7 @@ HTML 읽는 중 → <script> 발견 → 멈춤
 
 HTML 문서를 다 읽고 나서 스크립트를 만나게 하려고 `<body> 태그 직전`에 넣는 거예요.
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -51,7 +51,7 @@ HTML 문서를 다 읽고 나서 스크립트를 만나게 하려고 `<body> 태
 
 `defer` 속성이 붙게되면 HTML을 읽는 동안 동시에 진행돼서 파싱이 멈추지 않아요.
 
-```
+```html
 <head>
   <link rel="stylesheet" href="../css/style.css" />
 
@@ -78,10 +78,12 @@ CSS는 HTML 파싱을 막지 않고 화면에 그리는 단계만 기다리게 �
 
 CSS를 아래쪽에 두면 **스타일이 적용되지 않은 화면**이 잠깐 보였다가 바뀌는 현상이 생겨요. 이걸 **FOUC(Flash of Unstyled Content)** 라고 불러요.
 
-```
+```html
 <head>
-  <link rel="stylesheet" href="style.css" />   <!-- CSS는 위에 -->
-  <script defer src="main.js"></script>        <!-- JS는 defer로 -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- CSS는 위에 -->
+  <script defer src="main.js"></script>
+  <!-- JS는 defer로 -->
 </head>
 ```
 

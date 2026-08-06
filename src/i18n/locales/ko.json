@@ -23,6 +23,8 @@
   },
   "common": {
     "navigation": "메뉴",
-    "copy": "복사"
+    "copy": "복사",
+    "contributors": "기여자",
+    "last_changed": "수정 날짜"
   }
 }

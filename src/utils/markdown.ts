@@ -22,7 +22,9 @@ export function stripFrontmatter(content: string): string {
 }
 
 /**
- * Converts a markdown string to HTML using remark with GFM support.
+ * Converts a markdown string to HTML using the same pipeline as published
+ * content (GFM + syntax highlighting + raw HTML like `<details>`), so the
+ * editor preview matches what actually gets rendered on the site.
  *
  * @param {string} content - Raw markdown string
  * @returns {Promise<string>} HTML string
@@ -32,13 +34,22 @@ export function stripFrontmatter(content: string): string {
  * "<h1>Hello</h1>"
  */
 export async function renderMarkdown(content: string): Promise<string> {
-  const { remark } = await import("remark");
+  const { unified } = await import("unified");
+  const { default: remarkParse } = await import("remark-parse");
   const { default: remarkGfm } = await import("remark-gfm");
-  const { default: remarkHtml } = await import("remark-html");
+  const { default: remarkRehype } = await import("remark-rehype");
+  const { default: rehypeRaw } = await import("rehype-raw");
+  const { default: rehypeHighlight } = await import("rehype-highlight");
+  const { default: rehypeStringify } = await import("rehype-stringify");
 
-  const processed = await remark()
+  const processed = await unified()
+    .use(remarkParse)
     .use(remarkGfm)
-    .use(remarkHtml)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeHighlight)
+    .use(rehypeStringify)
     .process(content);
+
   return processed.toString();
 }

@@ -2,9 +2,14 @@ import fs from "fs";
 import matter from "gray-matter";
 import yaml from "js-yaml";
 import path from "path";
-import { remark } from "remark";
+import rehypeHighlight from "rehype-highlight";
+import rehypeRaw from "rehype-raw";
+import rehypeSanitize from "rehype-sanitize";
+import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
-import remarkHtml from "remark-html";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -20,6 +25,23 @@ const FRONTMATTER_OPTIONS = {
       yaml.safeLoad(input, { schema: yaml.CORE_SCHEMA }) as object,
   },
 };
+
+/**
+ * `rehype-raw` keeps raw HTML written in markdown (e.g. `<details>` FAQ
+ * blocks) instead of silently dropping it. Content is reviewed through a PR
+ * before merging, but `rehype-sanitize` still runs as defense-in-depth in
+ * case something slips past review — it must sit before `rehype-highlight`
+ * so the highlighter's own `hljs-*` spans are added after sanitizing and
+ * never get stripped.
+ */
+const markdownProcessor = unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeRaw)
+  .use(rehypeSanitize)
+  .use(rehypeHighlight)
+  .use(rehypeStringify);
 
 export interface ContentData {
   title: string;
@@ -68,10 +90,7 @@ export async function getContent(
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw, FRONTMATTER_OPTIONS);
 
-  const processed = await remark()
-    .use(remarkGfm)
-    .use(remarkHtml)
-    .process(content);
+  const processed = await markdownProcessor.process(content);
 
   return {
     ...(data as ContentData),

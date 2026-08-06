@@ -6,7 +6,7 @@
   "home_page": {
     "title": "Weaving Fundamentals",
     "description": "Connecting questions and answers with records of growth.",
-    "recent_posts": "Recent Post",
+    "recent_posts": "Recent Posts",
     "markdown_editor_title": "Markdown Editor",
     "markdown_editor_description": "We've included convenient features so you can focus on creating content. Write quickly and easily with our Markdown editor.",
     "markdown_editor_cta": "Open Editor"
@@ -23,6 +23,8 @@
   },
   "common": {
     "navigation": "Navigation",
-    "copy": "Copy"
+    "copy": "Copy",
+    "contributors": "Contributors",
+    "last_changed": "Last changed"
   }
 }

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "highlight.js/styles/github-dark.css";
 @plugin "@tailwindcss/typography";
 
 @theme {
@@ -39,4 +40,35 @@
   button {
     @apply cursor-pointer;
   }
+}
+
+/*
+ * Unlayered on purpose: @tailwindcss/typography's own `.prose` rules ship in
+ * a layer that beats `@layer base` regardless of selector specificity, so
+ * these overrides (code color, backtick removal, --tw-prose-pre-code) need
+ * to sit outside any @layer to actually win the cascade.
+ */
+.prose {
+  --tw-prose-pre-code: #ffffff;
+}
+
+.prose :not(pre) > code {
+  @apply rounded bg-rose-50 px-1.5 py-0.5 font-normal text-rose-600;
+}
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none;
+}
+
+.prose details {
+  @apply rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3;
+}
+.prose details + details {
+  @apply mt-3;
+}
+.prose summary {
+  @apply cursor-pointer font-semibold text-neutral-900 select-none;
+}
+.prose details[open] summary {
+  @apply mb-2;
 }

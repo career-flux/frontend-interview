@@ -5,7 +5,12 @@ import { type ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-import { JavaScriptIcon, ReactIcon, TypeScriptIcon } from "@/components/icons";
+import {
+  AntiPatternIcon,
+  JavaScriptIcon,
+  ReactIcon,
+  TypeScriptIcon,
+} from "@/components/icons";
 import { Select } from "@/components/ui";
 import { type NavCategory, type NavGroup } from "@/utils/nav";
 import { cn } from "@/utils/tailwind";
@@ -14,6 +19,7 @@ const CATEGORY_ICON: Record<string, ReactNode> = {
   javascript: <JavaScriptIcon width={16} height={16} />,
   typescript: <TypeScriptIcon width={16} height={16} />,
   react: <ReactIcon width={16} height={16} />,
+  "anti-patterns": <AntiPatternIcon width={16} height={16} />,
 };
 
 type NavGroupsParams = {

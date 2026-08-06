@@ -2,9 +2,13 @@ import fs from "fs";
 import matter from "gray-matter";
 import yaml from "js-yaml";
 import path from "path";
-import { remark } from "remark";
+import rehypeHighlight from "rehype-highlight";
+import rehypeRaw from "rehype-raw";
+import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
-import remarkHtml from "remark-html";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -20,6 +24,20 @@ const FRONTMATTER_OPTIONS = {
       yaml.safeLoad(input, { schema: yaml.CORE_SCHEMA }) as object,
   },
 };
+
+/**
+ * `rehype-raw` keeps raw HTML written in markdown (e.g. `<details>` FAQ
+ * blocks) instead of silently dropping it. Content only ever comes from
+ * markdown files reviewed through a PR, not runtime user input, so skipping
+ * sanitization here is intentional rather than an oversight.
+ */
+const markdownProcessor = unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeRaw)
+  .use(rehypeHighlight)
+  .use(rehypeStringify);
 
 export interface ContentData {
   title: string;
@@ -68,10 +86,7 @@ export async function getContent(
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw, FRONTMATTER_OPTIONS);
 
-  const processed = await remark()
-    .use(remarkGfm)
-    .use(remarkHtml)
-    .process(content);
+  const processed = await markdownProcessor.process(content);
 
   return {
     ...(data as ContentData),

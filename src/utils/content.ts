@@ -4,6 +4,7 @@ import yaml from "js-yaml";
 import path from "path";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
+import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
@@ -27,15 +28,18 @@ const FRONTMATTER_OPTIONS = {
 
 /**
  * `rehype-raw` keeps raw HTML written in markdown (e.g. `<details>` FAQ
- * blocks) instead of silently dropping it. Content only ever comes from
- * markdown files reviewed through a PR, not runtime user input, so skipping
- * sanitization here is intentional rather than an oversight.
+ * blocks) instead of silently dropping it. Content is reviewed through a PR
+ * before merging, but `rehype-sanitize` still runs as defense-in-depth in
+ * case something slips past review — it must sit before `rehype-highlight`
+ * so the highlighter's own `hljs-*` spans are added after sanitizing and
+ * never get stripped.
  */
 const markdownProcessor = unified()
   .use(remarkParse)
   .use(remarkGfm)
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeRaw)
+  .use(rehypeSanitize)
   .use(rehypeHighlight)
   .use(rehypeStringify);
 

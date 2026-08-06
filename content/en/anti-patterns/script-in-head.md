@@ -1,6 +1,6 @@
 ---
 title: Why should <script> go at the bottom of the document?
-description: Why script tags belong near the end of the body, and why defer is the better choice today — traced through how the browser parses a page.
+description: Why script tags belong near the end of the body, and why defer is the better choice today traced through how the browser parses a page.
 contributors: ["dango0812"]
 created_at: 2026-08-05
 updated_at: 2026-08-05
@@ -8,7 +8,7 @@ updated_at: 2026-08-05
 
 ## Where should the script tag go?
 
-It's common to gather external files like CSS and JavaScript inside the `<head>` tag, but that isn't a good approach. When the browser hits a script while rendering the page, it stops, downloads the file, and goes through parsing and compiling — which delays rendering.
+It's common to gather external files like CSS and JavaScript inside the `<head>` tag, but that isn't a good approach. When the browser hits a script while rendering the page, it stops, downloads the file, and goes through parsing and compiling which delays rendering.
 
 ## How the browser reads HTML
 
@@ -74,7 +74,7 @@ Because the order shifts with file size and network conditions, use it only for 
 Unlike JavaScript, CSS should stay in the `<head>`.
 
 The reason is that the browser treats the two resources differently.
-CSS doesn't block HTML parsing — it only holds back the painting step. JavaScript, on the other hand, halts parsing itself.
+CSS doesn't block HTML parsing it only holds back the painting step. JavaScript, on the other hand, halts parsing itself.
 
 Putting CSS near the bottom causes **an unstyled screen** to flash briefly before the styles kick in. This is called **FOUC (Flash of Unstyled Content).**
 

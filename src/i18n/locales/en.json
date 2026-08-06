@@ -4,8 +4,12 @@
     "description": "A collection of questions for those preparing for frontend developer interviews. It provides questions and answers across various topics."
   },
   "home_page": {
-    "title": "No pain, no gain.",
-    "description": "Best of luck with preparations !"
+    "title": "Weaving Fundamentals",
+    "description": "Connecting questions and answers with records of growth.",
+    "recent_posts": "Recent Post",
+    "markdown_editor_title": "Markdown Editor",
+    "markdown_editor_description": "We've included convenient features so you can focus on creating content. Write quickly and easily with our Markdown editor.",
+    "markdown_editor_cta": "Open Editor"
   },
   "editor_page": {
     "markdown_editor_header": "Markdown Editor",

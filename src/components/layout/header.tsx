@@ -12,7 +12,7 @@ interface HeaderProps {
 
 export default function Header({ lng }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white">
+    <header className="sticky top-0 z-50 w-full bg-white">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-2.5 lg:px-0">
         <Link href={`/${lng}`} aria-label="Flux Logo">
           <LogoIcon aria-hidden="true" width={120} height={48} />

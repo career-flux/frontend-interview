@@ -1,11 +1,25 @@
 import fs from "fs";
 import matter from "gray-matter";
+import yaml from "js-yaml";
 import path from "path";
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
+
+/**
+ * js-yaml's default schema (the one gray-matter uses) auto-parses unquoted
+ * dates like `created_at: 2026-08-05` into a JS Date instead of a string.
+ * CORE_SCHEMA drops that YAML-timestamp extension, so frontmatter dates
+ * parse as plain strings regardless of quoting.
+ */
+const FRONTMATTER_OPTIONS = {
+  engines: {
+    yaml: (input: string) =>
+      yaml.safeLoad(input, { schema: yaml.CORE_SCHEMA }) as object,
+  },
+};
 
 export interface ContentData {
   title: string;
@@ -52,7 +66,7 @@ export async function getContent(
   }
 
   const raw = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(raw);
+  const { data, content } = matter(raw, FRONTMATTER_OPTIONS);
 
   const processed = await remark()
     .use(remarkGfm)
@@ -65,6 +79,58 @@ export async function getContent(
     slug,
     html: processed.toString(),
   };
+}
+
+export interface RecentContent extends ContentData {
+  category: string;
+  slug: string;
+}
+
+/**
+ * Returns the most recently created contents for a locale, across all categories.
+ *
+ * @param {string} lng - Locale (e.g. "en", "ko")
+ * @param {number} limit - Max number of items to return
+ * @returns {RecentContent[]}
+ *
+ * @example
+ * getRecentContents("ko", 5)
+ * [{ title: "...", category: "react", slug: "hooks", created_at: "2026-08-05", ... }]
+ */
+export function getRecentContents(lng: string, limit: number): RecentContent[] {
+  const langDir = path.join(CONTENT_DIR, lng);
+
+  if (!fs.existsSync(langDir)) {
+    return [];
+  }
+
+  const categories = fs.readdirSync(langDir);
+  const items: RecentContent[] = [];
+
+  for (const category of categories) {
+    const categoryDir = path.join(langDir, category);
+    const files = fs
+      .readdirSync(categoryDir)
+      .filter((file) => file.endsWith(".md"));
+
+    for (const file of files) {
+      const filePath = path.join(categoryDir, file);
+      const { data } = matter(
+        fs.readFileSync(filePath, "utf-8"),
+        FRONTMATTER_OPTIONS
+      );
+
+      items.push({
+        ...(data as ContentData),
+        category,
+        slug: file.replace(".md", ""),
+      });
+    }
+  }
+
+  return items
+    .sort((a, b) => (a.created_at > b.created_at ? -1 : 1))
+    .slice(0, limit);
 }
 
 /**

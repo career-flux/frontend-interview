@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
   // Enable component-level caching for Server Components
   cacheComponents: true,
 
+  turbopack: {
+    root: __dirname,
+  },
+
   // Remove the "X-Powered-By: Next.js" response header for security
   poweredByHeader: false,
 

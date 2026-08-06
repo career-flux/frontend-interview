@@ -1,3 +1,4 @@
+export { AntiPatternIcon } from "./anti-pattern";
 export { ArrowUpRightIcon } from "./arrow-up-right";
 export { BugIcon } from "./bug";
 export { ChevronDownIcon } from "./chevron-down";
